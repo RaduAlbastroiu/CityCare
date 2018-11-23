@@ -97,7 +97,7 @@
                                         </constraints>
                                         <state key="normal" image="ProfileButton2"/>
                                         <connections>
-                                            <segue destination="x8B-f1-mvq" kind="presentation" id="FJD-hs-sBh"/>
+                                            <segue destination="x8B-f1-mvq" kind="presentation" identifier="ProfileSegue" id="FJD-hs-sBh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -175,6 +175,9 @@
                             <outletCollection property="gestureRecognizers" destination="7m5-Qt-gze" appends="YES" id="6w4-VI-dSp"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="21i-gt-VX9" id="gMf-6Q-gI2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivl-aL-8c7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="7m5-Qt-gze">

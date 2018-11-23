@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     var coreElements = CoreElements()
     var locationManager = LocationManager()
+    var profileData = ProfileStubData()
     
     @IBOutlet weak var reportIssueButton: UIView!
     @IBOutlet weak var mapView: MKMapView!
@@ -35,6 +36,14 @@ class ViewController: UIViewController {
 
     @IBAction func centerMap(_ sender: Any) {
         coreElements.mapController?.centerMapOnLocation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProfileSegue" {
+            if let profileController = segue.destination as? ProfileViewController {
+                profileController.profileModel = profileData
+            }
+        }
     }
 }
 
