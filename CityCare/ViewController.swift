@@ -11,14 +11,30 @@ import MapKit
 
 class ViewController: UIViewController {
 
-
+    var coreElements = CoreElements()
+    var locationManager = LocationManager()
+    
+    @IBOutlet weak var reportIssueButton: UIView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var centerMapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        reportIssueButton.layer.cornerRadius = 10
+        reportIssueButton.clipsToBounds = true
+    
+        centerMapButton.layer.cornerRadius = 25
+        centerMapButton.clipsToBounds = true
+        
+        coreElements.mapController = MapController(mapView: mapView)
+        coreElements.locationManager = locationManager
+        coreElements.locationManager?.delegate = coreElements.mapController
+        
     }
 
-
+    @IBAction func centerMap(_ sender: Any) {
+        coreElements.mapController?.centerMapOnLocation()
+    }
 }
 
