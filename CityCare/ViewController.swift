@@ -14,14 +14,15 @@ class ViewController: UIViewController {
     var coreElements = CoreElements()
     var locationManager = LocationManager()
     var profileData = ProfileStubData()
-    
+    var issueData = IssueStubData()
+
     @IBOutlet weak var reportIssueButton: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var centerMapButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         reportIssueButton.layer.cornerRadius = 10
         reportIssueButton.clipsToBounds = true
     
@@ -37,11 +38,15 @@ class ViewController: UIViewController {
     @IBAction func centerMap(_ sender: Any) {
         coreElements.mapController?.centerMapOnLocation()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileSegue" {
             if let profileController = segue.destination as? ProfileViewController {
                 profileController.profileModel = profileData
+            }
+        } else if segue.identifier == "IssuesSegue" {
+            if let statsController = segue.destination as? StatsViewController {
+                statsController.issueModel = issueData
             }
         }
     }

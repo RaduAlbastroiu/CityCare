@@ -80,8 +80,11 @@
 		DA7ACBEC21A85F120073E684 /* CityCare */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				DA7ACC1921A8BC930073E684 /* ImagePicker */,
+=======
 				0A40E9D621A8B37B00325D4F /* Issue */,
+>>>>>>> Stashed changes
 				DA7ACC1321A8A9590073E684 /* Profile */,
 				DA7ACC1121A89C8A0073E684 /* Location */,
 				DA7ACBED21A85F120073E684 /* AppDelegate.swift */,

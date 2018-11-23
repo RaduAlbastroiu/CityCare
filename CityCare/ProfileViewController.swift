@@ -10,13 +10,10 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
     var profileModel: ProfileModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        nameLabel.text = profileModel?.fullName
     }
     
     @IBAction func goBack(_ sender: Any) {

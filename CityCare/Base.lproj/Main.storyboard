@@ -86,7 +86,7 @@
                                         </constraints>
                                         <state key="normal" image="MenuIcon"/>
                                         <connections>
-                                            <segue destination="Ygs-m9-CDw" kind="presentation" id="Cp8-DF-Wkm"/>
+                                            <segue destination="Ygs-m9-CDw" kind="presentation" identifier="IssuesSegue" id="Cp8-DF-Wkm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-kn-Pr2">
@@ -346,6 +346,9 @@
                             <outletCollection property="gestureRecognizers" destination="SpD-XN-wqW" appends="YES" id="uQY-f3-AYY"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="issueTitle" destination="Kcw-yY-95l" id="3K7-DL-0Ah"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSC-e2-aTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="SpD-XN-wqW">

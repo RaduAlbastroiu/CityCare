@@ -10,10 +10,15 @@ import UIKit
 
 class StatsViewController: UIViewController {
 
+    @IBOutlet weak var issueTitle: UILabel!
+
+    var issueModel: IssueModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        issueTitle.text = issueModel?.title
     }
     
 
