@@ -19,6 +19,7 @@
 		DA7ACC0E21A899260073E684 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0D21A899260073E684 /* MapController.swift */; };
 		DA7ACC1021A89C350073E684 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0F21A89C340073E684 /* LocationManager.swift */; };
 		DA7ACC1521A8A98E0073E684 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC1421A8A98E0073E684 /* ProfileModel.swift */; };
+		DA7ACC1B21A8BCAD0073E684 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC1A21A8BCAD0073E684 /* ImagePickerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DA7ACC0D21A899260073E684 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		DA7ACC0F21A89C340073E684 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		DA7ACC1421A8A98E0073E684 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		DA7ACC1A21A8BCAD0073E684 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		DA7ACBEC21A85F120073E684 /* CityCare */ = {
 			isa = PBXGroup;
 			children = (
+				DA7ACC1921A8BC930073E684 /* ImagePicker */,
 				DA7ACC1321A8A9590073E684 /* Profile */,
 				DA7ACC1121A89C8A0073E684 /* Location */,
 				DA7ACBED21A85F120073E684 /* AppDelegate.swift */,
@@ -99,6 +102,14 @@
 				DA7ACC1421A8A98E0073E684 /* ProfileModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		DA7ACC1921A8BC930073E684 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				DA7ACC1A21A8BCAD0073E684 /* ImagePickerManager.swift */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				DA7ACC0821A874820073E684 /* StatsViewController.swift in Sources */,
 				DA7ACC1021A89C350073E684 /* LocationManager.swift in Sources */,
 				DA7ACC0A21A877110073E684 /* ReportViewController.swift in Sources */,
+				DA7ACC1B21A8BCAD0073E684 /* ImagePickerManager.swift in Sources */,
 				DA7ACBEE21A85F120073E684 /* AppDelegate.swift in Sources */,
 				DA7ACC0C21A898ED0073E684 /* CoreElements.swift in Sources */,
 			);

@@ -315,6 +315,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GGd-Y8-GF7"/>
                     </view>
+                    <connections>
+                        <outlet property="imageChosen" destination="rbu-vG-HID" id="32Y-01-aJe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SP8-tc-XXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

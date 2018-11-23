@@ -10,10 +10,23 @@ import UIKit
 
 class ReportViewController: UIViewController {
 
+    @IBOutlet weak var imageChosen: UIImageView!
+    var coreElements: CoreElements?
+    var imagePicker: ImagePickerManager?
+    var viewFirstAppeared = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        imagePicker = ImagePickerManager(presentingViewController: self)
+        imagePicker?.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if viewFirstAppeared {
+            imagePicker?.presentPhotoPickerCamera(animated: true)
+            viewFirstAppeared = false
+        }
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -30,4 +43,11 @@ class ReportViewController: UIViewController {
     }
     */
 
+}
+
+extension ReportViewController: ImagePickerManagerDelegate {
+    func imageChosen(manager: ImagePickerManager, image: UIImage) {
+        imageChosen.image = image
+        manager.dismissPhotoPicker(animated: true, completion: nil)
+    }
 }
