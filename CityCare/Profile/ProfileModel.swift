@@ -17,6 +17,17 @@ enum Gender: String {
     func get() -> String {
         return self.rawValue
     }
+
+    init?(value: Int) {
+        if value == Int("0") {
+            self = .male
+        } else if value == Int("1") {
+            self = .female
+        } else {
+            self = .notSpecified
+        }
+    }
+
 }
 
 protocol ProfileModel {

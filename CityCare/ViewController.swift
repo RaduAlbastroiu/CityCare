@@ -37,6 +37,7 @@ class ViewController: UIViewController {
         coreElements.networkManager = networkManager
 
         getAllIssues()
+        getProfileData(email: "deventuredev@gmailcom")
     }
     
     func getAllIssues() {
@@ -44,6 +45,12 @@ class ViewController: UIViewController {
             if issues.count > 0 {
                 self.coreElements.allIssues = issues
             }
+        })
+    }
+    
+    func getProfileData(email: String) {
+        coreElements.networkManager?.getUserData(userEmail: email, completitionHandler: { data in
+            self.coreElements.profileData = data
         })
     }
 
