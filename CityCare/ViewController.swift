@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         coreElements.locationManager = locationManager
         coreElements.locationManager?.delegate = coreElements.mapController
         
-        var networkManager = NetworkManager()
+        let networkManager = NetworkManager()
         coreElements.networkManager = networkManager
 
         getAllIssues()
@@ -53,9 +53,9 @@ class ViewController: UIViewController {
     
     func checkAuthorization() {
 
-        if let email = UserDefaults.standard.string(forKey: self.coreElements.accessTokenKey),
-            let tokenType = UserDefaults.standard.string(forKey: self.coreElements.tokenTypeKey),
-            let accessToken = UserDefaults.standard.string(forKey: self.coreElements.emailKey) {
+        if let email = UserDefaults.standard.string(forKey: coreElements.emailKey),
+            let tokenType = UserDefaults.standard.string(forKey: coreElements.tokenTypeKey),
+            let accessToken = UserDefaults.standard.string(forKey: coreElements.accessTokenKey) {
 
             isAuthorized(email: email, tokenType: tokenType, accessToken: accessToken)
         } else {

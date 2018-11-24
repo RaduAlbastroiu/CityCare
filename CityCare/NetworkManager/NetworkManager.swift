@@ -15,9 +15,11 @@ class NetworkManager: NSObject {
     var getIssuesUrl = "http://itec-api.deventure.co/api/Issue/GetAll";
     var userDataStr = "http://itec-api.deventure.co/api/Account/GetUserByEmail?email=";
     var isAuthorizedStr = "http://itec-api.deventure.co/api/Account/IsAuthorized?email=";
-    var registerUserStr = "http://itec-api.deventure.co/api/Account/Register"
-    var loginUserStr = "http://itec-api.deventure.co/api/Token"
-    
+    var registerUserStr = "http://itec-api.deventure.co/api/Account/Register";
+    var loginUserStr = "http://itec-api.deventure.co/api/Token";
+    var addCommentStr = "http://itec-api.deventure.co/api/Comment/Create";
+
+
     func getIssues(completitionHandler completion:@escaping ([IssueModel]) -> Void) {
 
         // build request url
@@ -256,6 +258,35 @@ class NetworkManager: NSObject {
         task.resume()
     }
 
+    func addComment(commentModel: CommentModel, issueId: String, tokenType: String, accessToken:String, completitionHandler completion:@escaping (Bool) -> Void) {
+        
+        // build request url
+        let addCommentUrl = URL(string: addCommentStr)!
+        var request = URLRequest(url: addCommentUrl)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let x = tokenType + " " + accessToken
+        request.setValue(x, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        
+        let json = commentModel.toJson(issueId: issueId)
+        request.httpBody = json.data(using: .utf8)
+        print(json)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+
+            let status = httpResponse.statusCode
+            if(status == 200) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        // start task
+        task.resume()
+    }
+    
     func constructIssue(issueDict: [String:Any]) -> IssueModel {
 
         let issueModel = IssueStubData()
@@ -305,7 +336,7 @@ class NetworkManager: NSObject {
             }
 
             for imageUrl in images {
-                issueModel.images.append(self.downloadImage(from: URL(string: imageUrl)!))
+                //issueModel.images.append(self.downloadImage(from: URL(string: imageUrl)!))
             }
 
         }

@@ -17,9 +17,15 @@ protocol CommentModel {
 }
 
 class CommentStubData : CommentModel {
-    var id = "9d658973-ebb6-48e6-bd75-7f1d2327376a"
-    var content = "Hi loosers"
+    var id = "14315d5a-dffd-410d-afe8-9003fd85aba5"
+    var content = "swft"
     var creator = "Paul Boldijar"
     var createdAt = Date.init(timeIntervalSince1970: 1542996003941)
     var edited = -1
+}
+
+extension CommentModel {
+    func toJson(issueId: String) -> String {
+        return "{ \"Id\": \"" + id + "\", \"IssueId\": \"" + issueId + "\", \"Content\": \"" + content + "\", \"CreatedBy\": \"" + creator + "\"}"
+    }
 }

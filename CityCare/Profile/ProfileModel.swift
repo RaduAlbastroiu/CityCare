@@ -17,7 +17,6 @@ enum Gender: Int {
     func get() -> Int {
         return self.rawValue
     }
-
 }
 
 protocol ProfileModel {
