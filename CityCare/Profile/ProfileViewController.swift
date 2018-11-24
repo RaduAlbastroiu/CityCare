@@ -15,10 +15,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     
     var coreElements: CoreElements?
-    var profileModel: ProfileModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fullNameLabel.text = coreElements?.authorizationModel?.profileData.fullName
         
     }
     

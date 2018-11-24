@@ -121,7 +121,6 @@
 				DA7ACC0221A861650073E684 /* Main.storyboard */,
 				DA7ACC0B21A898ED0073E684 /* CoreElements.swift */,
 				DA7ACC0921A877110073E684 /* ReportViewController.swift */,
-				DA7ACC0521A874700073E684 /* ProfileViewController.swift */,
 				DA7ACBF421A85F130073E684 /* Assets.xcassets */,
 				DA7ACBF621A85F130073E684 /* LaunchScreen.storyboard */,
 				DA7ACBF921A85F130073E684 /* Info.plist */,
@@ -147,6 +146,7 @@
 				0A40E9DF21A98E0400325D4F /* ProfileRegisterModel.swift */,
 				DA7ACC3221A9C0810073E684 /* LoginViewController.swift */,
 				DA7ACC3421A9C0920073E684 /* RegisterViewController.swift */,
+				DA7ACC0521A874700073E684 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

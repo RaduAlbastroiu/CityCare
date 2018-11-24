@@ -116,13 +116,16 @@ class ViewController: UIViewController {
         if segue.identifier == "ProfileSegue" {
             if let profileController = segue.destination as? ProfileViewController {
                 profileController.coreElements = coreElements
-                profileController.profileModel = profileData
             }
         } else if segue.identifier == "IssueListSegue" {
             if let issueNavigationController = segue.destination as? UINavigationController,
                 let issueListController = issueNavigationController.topViewController as? IssuesListController {
                 
                 issueListController.coreElements = coreElements
+            }
+        } else if segue.identifier == "LoginSegue" {
+            if let loginViewController = segue.destination as? LoginViewController {
+                loginViewController.coreElements = self.coreElements
             }
         }
     }
