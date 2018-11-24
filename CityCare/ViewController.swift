@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         coreElements.networkManager?.getIssues(completitionHandler: { issues in
             if issues.count > 0 {
                 self.coreElements.allIssues = issues
+                self.coreElements.issueDataSource.update(with: issues)
             }
         })
     }
@@ -56,6 +57,12 @@ class ViewController: UIViewController {
             if let profileController = segue.destination as? ProfileViewController {
                 profileController.coreElements = coreElements
                 profileController.profileModel = profileData
+            }
+        } else if segue.identifier == "IssueListSegue" {
+            if let issueNavigationController = segue.destination as? UINavigationController,
+                let issueListController = issueNavigationController.topViewController as? IssuesListController {
+                
+                issueListController.coreElements = coreElements
             }
         }
     }

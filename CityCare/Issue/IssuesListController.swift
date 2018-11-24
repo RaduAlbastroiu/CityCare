@@ -10,6 +10,7 @@ import UIKit
 
 class IssuesListController: UITableViewController {
 
+    var coreElements: CoreElements?
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -20,7 +21,7 @@ class IssuesListController: UITableViewController {
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
         
-        //tableView.dataSource = dataSource
+        tableView.dataSource = coreElements?.issueDataSource
     }
 
     func dismissListController() {
