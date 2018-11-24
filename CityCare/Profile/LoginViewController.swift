@@ -27,27 +27,16 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
+        if let email = emailTextField.text,
+            let password = passwordTextField.text {
+            
             coreElements?.networkManager?.loginUser(email: email, password: password, completitionHandler: { (tokenModel) in
+               
                 if tokenModel.expiresIn == -1 {
                     self.errorMessageLabel.isHidden = false
-                    
-                    self.coreElements?.authorizationModel?.profileData = ProfileStubData()
-                    self.coreElements?.authorizationModel?.success = false
-                    self.coreElements?.authorizationModel?.statusCode = -1
-                    
-                } else if tokenModel.expiresIn > 0 {
-                    
-                    UserDefaults.standard.set(tokenModel.accessToken, forKey: self.coreElements!.accessTokenKey)
-                    UserDefaults.standard.set(tokenModel.tokenType, forKey: self.coreElements!.tokenTypeKey)
-                    UserDefaults.standard.set(tokenModel.userName, forKey: self.coreElements!.emailKey)
-                    
-                    self.coreElements?.authorizationModel?.profileData = tokenModel.userData
-                    self.coreElements?.authorizationModel?.success = true
-                    self.coreElements?.authorizationModel?.statusCode = 0
-                    
-                    self.coreElements?.isLoggedIn = true
-                    
+                    self.coreElements?.loginFailed()
+                } else {
+                    self.coreElements?.loginSucceded(tokenModel: tokenModel)
                     self.dismiss(animated: true, completion: nil)
                 }
             })

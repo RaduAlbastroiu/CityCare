@@ -19,6 +19,16 @@ class NetworkManager: NSObject {
     var loginUserStr = "http://itec-api.deventure.co/api/Token";
     var addCommentStr = "http://itec-api.deventure.co/api/Comment/Create";
 
+    var coreElements: CoreElements?
+    
+    func getAllIssues() {
+       getIssues(completitionHandler: { issues in
+            if issues.count > 0 {
+                self.coreElements?.allIssues = issues
+                self.coreElements?.issueDataSource.update(with: issues)
+            }
+        })
+    }
 
     func getIssues(completitionHandler completion:@escaping ([IssueModel]) -> Void) {
 
@@ -118,6 +128,7 @@ class NetworkManager: NSObject {
         let task = session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                    completion(AuthorizationStubData())
                     return
                 }
                 
@@ -137,6 +148,7 @@ class NetworkManager: NSObject {
                             
                         completion(authModel)
                     } catch {
+                        completion(AuthorizationStubData())
                         print("Error deserializing JSON: \(error)")
                     }
                     
@@ -163,6 +175,7 @@ class NetworkManager: NSObject {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                completion(TokenStubData())
                 return
             }
             
@@ -191,23 +204,18 @@ class NetworkManager: NSObject {
                             }
                         } catch let error as NSError {
                             print(error)
-                            let tokenData = TokenStubData()
-                            tokenData.expiresIn = -1
-                            completion(tokenData)
+                            completion(TokenStubData())
                         }
                     }
-                    
+                    // successful path
                     completion(tokenModel)
                 } catch {
+                    completion(TokenStubData())
                     print("Error deserializing JSON: \(error)")
                 }
             } else {
-                let tokenData = TokenStubData()
-                tokenData.expiresIn = -1
-                completion(tokenData)
+                completion(TokenStubData())
             }
-            
-            
         }
         // start task
         task.resume()

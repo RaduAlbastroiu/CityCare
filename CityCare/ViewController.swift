@@ -35,66 +35,33 @@ class ViewController: UIViewController {
         
         let networkManager = NetworkManager()
         coreElements.networkManager = networkManager
-
-        getAllIssues()
+        networkManager.coreElements = coreElements
+        
+        networkManager.getAllIssues()
         
         checkAuthorization()
     }
     
-    func loginUser(email: String, password: String) {
-        coreElements.networkManager?.loginUser(email: email, password: password, completitionHandler: { tokenData in
-
-            // set in local storage
-            UserDefaults.standard.set(tokenData.accessToken, forKey: self.coreElements.accessTokenKey)
-            UserDefaults.standard.set(tokenData.tokenType, forKey: self.coreElements.tokenTypeKey)
-            UserDefaults.standard.set(tokenData.userName, forKey: self.coreElements.emailKey)      // username IS the email
-        })
-    }
-    
     func checkAuthorization() {
-
         if let email = UserDefaults.standard.string(forKey: coreElements.emailKey),
             let tokenType = UserDefaults.standard.string(forKey: coreElements.tokenTypeKey),
             let accessToken = UserDefaults.standard.string(forKey: coreElements.accessTokenKey) {
 
-            isAuthorized(email: email, tokenType: tokenType, accessToken: accessToken)
+            coreElements.networkManager?.isAuthorized(userEmail: email, tokenType: tokenType, accessToken: accessToken, completitionHandler: { authorizationModel in
+                if authorizationModel.success == false {
+                    self.coreElements.authorizationFailed()
+                } else {
+                    self.coreElements.authorizationSucceded(authorization: authorizationModel)
+                }
+            })
         } else {
-            self.coreElements.authorizationModel = nil
-            self.coreElements.isLoggedIn = false
+            self.coreElements.authorizationFailed()
         }
-    }
-    
-    func getAllIssues() {
-        coreElements.networkManager?.getIssues(completitionHandler: { issues in
-            if issues.count > 0 {
-                self.coreElements.allIssues = issues
-                self.coreElements.issueDataSource.update(with: issues)
-            }
-        })
-    }
-    
-    func getProfileData(email: String) {
-        coreElements.networkManager?.getUserData(userEmail: email, completitionHandler: { data in
-            self.coreElements.authorizationModel = data
-        })
     }
     
     func registerUser(registerModel: ProfileRegisterModel) {
         coreElements.networkManager?.registerUser(registerModel: ProfileRegisterStubData(), completitionHandler: { data in
             self.coreElements.authorizationModel = data
-        })
-    }
-    
-    func isAuthorized(email:String, tokenType: String, accessToken: String) {
-        
-        coreElements.networkManager?.isAuthorized(userEmail: email, tokenType: tokenType, accessToken: accessToken, completitionHandler: { data in
-            if data.success == false {
-                self.coreElements.authorizationModel = nil
-                self.coreElements.isLoggedIn = false
-            } else {
-                self.coreElements.authorizationModel = data
-                self.coreElements.isLoggedIn = true
-            }
         })
     }
 
