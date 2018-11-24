@@ -14,6 +14,7 @@ class NetworkManager: NSObject {
     var urlIssues = URL(string: "http://itec-api.deventure.co/api/Issue/GetAll")
     var userDataStr = "http://itec-api.deventure.co/api/Account/GetUserByEmail?email=";
     var isAuthorizedStr = "http://itec-api.deventure.co/api/Account/IsAuthorized?email=";
+    var registerUserStr = "http://itec-api.deventure.co/api/Account/Register"
 
     func getIssues(completitionHandler completion:@escaping ([IssueModel]) -> Void) {
         let request = URLRequest(url: urlIssues!)
@@ -141,6 +142,34 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
+    func registerUser(registerModel: ProfileRegisterModel, completitionHandler completion:@escaping (AuthorizationModel) -> Void) {
+
+        let registerUrl = URL(string: registerUserStr)!
+        var request = URLRequest(url: registerUrl)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        var json = registerModel.toJson()
+        print(json)
+
+        request.httpBody = json.data(using: .utf8)
+       
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print(httpStatus.statusCode)
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+    }
+
     func constructIssue(issueDict: [String:Any]) -> IssueModel {
         
         let issueModel = IssueStubData()
@@ -217,7 +246,7 @@ class NetworkManager: NSObject {
             profileData.longitude = longitude
             profileData.radius = radius
             profileData.age = age
-            profileData.gender = Gender(value: gender)!
+            profileData.gender = Gender(rawValue: gender)!
             for issue in issues {
                 if let issueDict = issue as? [String:Any] {
                     profileData.issues.append(self.constructIssue(issueDict: issueDict))

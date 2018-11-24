@@ -9,23 +9,13 @@
 import Foundation
 import UIKit
 
-enum Gender: String {
-    case female
-    case male
-    case notSpecified
+enum Gender: Int {
+    case female = 0
+    case male = 1
+    case notSpecified = -1
     
-    func get() -> String {
+    func get() -> Int {
         return self.rawValue
-    }
-
-    init?(value: Int) {
-        if value == Int("0") {
-            self = .male
-        } else if value == Int("1") {
-            self = .female
-        } else {
-            self = .notSpecified
-        }
     }
 
 }
