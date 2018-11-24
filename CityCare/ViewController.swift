@@ -57,10 +57,6 @@ class ViewController: UIViewController {
                 profileController.coreElements = coreElements
                 profileController.profileModel = profileData
             }
-        } else if segue.identifier == "IssuesSegue" {
-            if let statsController = segue.destination as? StatsViewController {
-                statsController.issueModel = issueData
-            }
         }
     }
 }

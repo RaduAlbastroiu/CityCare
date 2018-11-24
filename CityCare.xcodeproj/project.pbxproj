@@ -14,7 +14,6 @@
 		DA7ACBF821A85F130073E684 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7ACBF621A85F130073E684 /* LaunchScreen.storyboard */; };
 		DA7ACC0421A861650073E684 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7ACC0221A861650073E684 /* Main.storyboard */; };
 		DA7ACC0621A874700073E684 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0521A874700073E684 /* ProfileViewController.swift */; };
-		DA7ACC0821A874820073E684 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0721A874820073E684 /* StatsViewController.swift */; };
 		DA7ACC0A21A877110073E684 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0921A877110073E684 /* ReportViewController.swift */; };
 		DA7ACC0C21A898ED0073E684 /* CoreElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0B21A898ED0073E684 /* CoreElements.swift */; };
 		DA7ACC0E21A899260073E684 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC0D21A899260073E684 /* MapController.swift */; };
@@ -22,6 +21,7 @@
 		DA7ACC1521A8A98E0073E684 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC1421A8A98E0073E684 /* ProfileModel.swift */; };
 		DA7ACC1B21A8BCAD0073E684 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC1A21A8BCAD0073E684 /* ImagePickerManager.swift */; };
 		DA7ACC1F21A923C00073E684 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC1E21A923C00073E684 /* NetworkManager.swift */; };
+		DA7ACC2321A956640073E684 /* IssuesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2221A956640073E684 /* IssuesListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,6 @@
 		DA7ACBF921A85F130073E684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA7ACC0321A861650073E684 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA7ACC0521A874700073E684 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		DA7ACC0721A874820073E684 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		DA7ACC0921A877110073E684 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		DA7ACC0B21A898ED0073E684 /* CoreElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreElements.swift; sourceTree = "<group>"; };
 		DA7ACC0D21A899260073E684 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		DA7ACC1421A8A98E0073E684 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		DA7ACC1A21A8BCAD0073E684 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		DA7ACC1E21A923C00073E684 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DA7ACC2221A956640073E684 /* IssuesListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuesListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +58,7 @@
 		0A40E9D621A8B37B00325D4F /* Issue */ = {
 			isa = PBXGroup;
 			children = (
+				DA7ACC2221A956640073E684 /* IssuesListController.swift */,
 				0A40E9D721A8B3AF00325D4F /* IssueModel.swift */,
 			);
 			path = Issue;
@@ -93,7 +94,6 @@
 				DA7ACC0B21A898ED0073E684 /* CoreElements.swift */,
 				DA7ACC0921A877110073E684 /* ReportViewController.swift */,
 				DA7ACC0521A874700073E684 /* ProfileViewController.swift */,
-				DA7ACC0721A874820073E684 /* StatsViewController.swift */,
 				DA7ACBF421A85F130073E684 /* Assets.xcassets */,
 				DA7ACBF621A85F130073E684 /* LaunchScreen.storyboard */,
 				DA7ACBF921A85F130073E684 /* Info.plist */,
@@ -210,8 +210,8 @@
 				DA7ACC0621A874700073E684 /* ProfileViewController.swift in Sources */,
 				DA7ACC0E21A899260073E684 /* MapController.swift in Sources */,
 				0A40E9D821A8B3AF00325D4F /* IssueModel.swift in Sources */,
+				DA7ACC2321A956640073E684 /* IssuesListController.swift in Sources */,
 				DA7ACBF021A85F120073E684 /* ViewController.swift in Sources */,
-				DA7ACC0821A874820073E684 /* StatsViewController.swift in Sources */,
 				DA7ACC1021A89C350073E684 /* LocationManager.swift in Sources */,
 				DA7ACC0A21A877110073E684 /* ReportViewController.swift in Sources */,
 				DA7ACC1B21A8BCAD0073E684 /* ImagePickerManager.swift in Sources */,
