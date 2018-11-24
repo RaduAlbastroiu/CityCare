@@ -16,5 +16,7 @@ class CoreElements {
     var networkManager: NetworkManager?
     
     var allIssues: [IssueModel]?
+    var issueDataSource = IssueDataSource()
+    
     var profileData: ProfileModel?
 }

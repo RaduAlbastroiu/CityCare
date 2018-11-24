@@ -86,7 +86,7 @@
                                         </constraints>
                                         <state key="normal" image="MenuIcon"/>
                                         <connections>
-                                            <segue destination="7UI-41-iJ8" kind="presentation" id="xPb-Bd-jg1"/>
+                                            <segue destination="7UI-41-iJ8" kind="presentation" identifier="IssueListSegue" id="xPb-Bd-jg1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-kn-Pr2">
@@ -337,7 +337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hcX-Hd-8d9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueCell" id="hcX-Hd-8d9" customClass="IssueCell" customModule="CityCare" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hcX-Hd-8d9" id="vck-ra-Ger">
@@ -356,7 +356,9 @@
                                         <constraint firstItem="pp2-FA-r7F" firstAttribute="leading" secondItem="vck-ra-Ger" secondAttribute="leadingMargin" constant="8" id="g8t-o4-cgT"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="IssueCell"/>
                                 <connections>
+                                    <outlet property="issueTitleLabel" destination="pp2-FA-r7F" id="IYY-mS-7bX"/>
                                     <segue destination="iYI-uo-H4a" kind="show" id="Ri7-ds-fuS"/>
                                 </connections>
                             </tableViewCell>
