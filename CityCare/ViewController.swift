@@ -41,6 +41,16 @@ class ViewController: UIViewController {
         checkAuthorization()
     }
     
+    func loginUser(email: String, password: String) {
+        coreElements.networkManager?.loginUser(email: email, password: password, completitionHandler: { tokenData in
+
+            // set in local storage
+            UserDefaults.standard.set(tokenData.accessToken, forKey: self.coreElements.accessTokenKey)
+            UserDefaults.standard.set(tokenData.tokenType, forKey: self.coreElements.tokenTypeKey)
+            UserDefaults.standard.set(tokenData.userName, forKey: self.coreElements.email)      // username IS the email
+        })
+    }
+    
     func checkAuthorization() {
 
         if let email = UserDefaults.standard.string(forKey: "email"),

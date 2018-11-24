@@ -11,6 +11,10 @@ import MapKit
 
 class CoreElements {
     
+    let accessTokenKey = "accessToken"
+    let tokenTypeKey = "tokenType"
+    let email = "email"
+    
     var mapController: MapController?
     var locationManager: LocationManager?
     var networkManager: NetworkManager?
@@ -20,5 +24,6 @@ class CoreElements {
     
     var profileData: ProfileModel?
     var authorizationModel: AuthorizationModel?
+    
     var isLoggedIn = false
 }

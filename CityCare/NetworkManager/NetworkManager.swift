@@ -15,7 +15,8 @@ class NetworkManager: NSObject {
     var userDataStr = "http://itec-api.deventure.co/api/Account/GetUserByEmail?email=";
     var isAuthorizedStr = "http://itec-api.deventure.co/api/Account/IsAuthorized?email=";
     var registerUserStr = "http://itec-api.deventure.co/api/Account/Register"
-
+    var loginUserStr = "http://itec-api.deventure.co/api/Token"
+    
     func getIssues(completitionHandler completion:@escaping ([IssueModel]) -> Void) {
         let request = URLRequest(url: urlIssues!)
         let session = URLSession(configuration: .default)
@@ -140,12 +141,71 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
-    func loginUser(email: String, password: String, CompletitionHandler completion:@escaping (TokenModel) -> Void) {
+    func loginUser(email: String, password: String, completitionHandler completion:@escaping (TokenModel) -> Void) {
         
+        // build request url
+        let loginUrl = URL(string: loginUserStr)!
+        var request = URLRequest(url: loginUrl)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        // TODO: review this
+        let json = "{ \"username\": \"" + email + "\", \"password\": \"" + password + "\", \"grant_type\":\"password\" }"
+        request.httpBody = json.data(using: .utf8)
+        let d = ("username="+email + "&" + "password=" + password + "&grant_type=password").data(using:String.Encoding.ascii, allowLossyConversion: false)
+        request.httpBody = d
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+            
+            let status = httpResponse.statusCode
+            if(status == 200) {
+                do {
+                    let responseString = String(data: data, encoding: .utf8)
+                    let tokenModel = TokenStubData()
+                    if let tokenDict = try JSONSerialization.jsonObject(with: data) as? [String:Any],
+                        let accessToken = tokenDict["access_token"] as? String,
+                        let tokenType = tokenDict["token_type"] as? String,
+                        let expiresIn = tokenDict["expires_in"] as? Int,
+                        let userName = tokenDict["userName"] as? String,
+                        let userData = tokenDict["userData"] as? String {
+                        
+                        tokenModel.accessToken = accessToken
+                        tokenModel.tokenType = tokenType
+                        tokenModel.expiresIn = expiresIn
+                        tokenModel.userName = userName
+                        
+                        let data = userData.data(using: .utf8)!
+                        do {
+                            if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:AnyObject] {
+                                tokenModel.userData = self.constructProfileData(profileDict: jsonArray)
+                            } else {
+                                print("loginUser: parseJson - bad json")
+                            }
+                        } catch let error as NSError {
+                            print(error)
+                        }
+                    }
+                    
+                    completion(tokenModel)
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                }
+            } else {
+                completion(TokenStubData())
+            }
+            
+            
+        }
+        // start task
+        task.resume()
     }
     
     func registerUser(registerModel: ProfileRegisterModel, completitionHandler completion:@escaping (AuthorizationModel) -> Void) {
-
+        
+        // build request url
         let registerUrl = URL(string: registerUserStr)!
         var request = URLRequest(url: registerUrl)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
