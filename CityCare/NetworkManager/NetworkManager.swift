@@ -18,7 +18,7 @@ class NetworkManager: NSObject {
     var registerUserStr = "http://itec-api.deventure.co/api/Account/Register";
     var loginUserStr = "http://itec-api.deventure.co/api/Token";
     var addCommentStr = "http://itec-api.deventure.co/api/Comment/Create";
-
+    var updateUserStr = "http://itec-api.deventure.co/api/Account/Update";
 
     func getIssues(completitionHandler completion:@escaping ([IssueModel]) -> Void) {
 
@@ -257,6 +257,43 @@ class NetworkManager: NSObject {
         // start task
         task.resume()
     }
+    
+    func updateUser(userModel: ProfileRegisterModel, completitionHandler completion:@escaping (Bool) -> Void) {
+        
+        // build request url
+        let updateUserUrl = URL(string: updateUserStr)!
+        var request = URLRequest(url: updateUserUrl)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let json = userModel.updatedJson()
+        request.httpBody = json.data(using: .utf8)
+        print(json)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+            
+            let status = httpResponse.statusCode
+            if(status == 200) {
+                do {
+                    if let authDict = try JSONSerialization.jsonObject(with: data) as? [String:Any],
+                        let success = authDict["Success"] as? Bool {
+                        completion(success)
+                    }
+                } catch {
+                    print("Error deserializing JSON: \(error)")
+                }
+            } else {
+                completion(false)
+            }
+            
+        }
+        
+        // start task
+        task.resume()
+    }
+
 
     func addComment(commentModel: CommentModel, issueId: String, tokenType: String, accessToken:String, completitionHandler completion:@escaping (Bool) -> Void) {
         

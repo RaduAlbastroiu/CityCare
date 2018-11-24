@@ -23,20 +23,24 @@ protocol ProfileRegisterModel {
 }
 
 class ProfileRegisterStubData : ProfileRegisterModel {
-    var id = "79aeeb63-deb8-4c78-b9d1-5efa62f2ed08"
-    var fullName = "Itec User"
-    var email = "itec3@deventure.co"
+    var id = "79aeeb63-deb8-4c78-b9d1-5efa62f2ed19"
+    var fullName = "Swifters bby"
+    var email = "switers@gmail.com"
     var latitude = 45.748871
     var longitude = 45.748871
     var radius = 100
     var age = 22
     var gender = Gender.female
-    var password = "deventure1@"
+    var password = "12345"
     var profilePicture: UIImage? = nil
 }
 
 extension ProfileRegisterModel {
     func toJson() -> String {
         return "{ \"Id\": \"" + id + "\", \"FullName\": \"" + fullName + "\", \"Email\": \"" + email + "\", \"Latitude\": " + String(latitude) + ", \"Longitude\": " + String(longitude) + ", \"Radius\": " + String(radius) + ", \"Age\": " + String(age) + ", \"Gender\": " + String(gender.rawValue) + ", \"Password\": \"" + password + "\"}"
+    }
+
+    func updatedJson() -> String {
+        return "{ \"Id\": \"" + id + "\", \"FullName\": \"" + fullName + "\", \"Latitude\": " + String(latitude) + ", \"Longitude\": " + String(longitude) + ", \"Radius\": " + String(radius) + ", \"Age\": " + String(age) + ", \"Gender\": " + String(gender.rawValue) + "}"
     }
 }
