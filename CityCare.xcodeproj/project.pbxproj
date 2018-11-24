@@ -31,6 +31,8 @@
 		DA7ACC2B21A97E990073E684 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2A21A97E990073E684 /* IssueViewController.swift */; };
 		DA7ACC2F21A990280073E684 /* CommentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2E21A990280073E684 /* CommentsDataSource.swift */; };
 		DA7ACC3121A990A00073E684 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC3021A990A00073E684 /* CommentCell.swift */; };
+		DA7ACC3321A9C0810073E684 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC3221A9C0810073E684 /* LoginViewController.swift */; };
+		DA7ACC3521A9C0920073E684 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC3421A9C0920073E684 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		DA7ACC2A21A97E990073E684 /* IssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 		DA7ACC2E21A990280073E684 /* CommentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataSource.swift; sourceTree = "<group>"; };
 		DA7ACC3021A990A00073E684 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		DA7ACC3221A9C0810073E684 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DA7ACC3421A9C0920073E684 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				0A40E9DB21A9742000325D4F /* TokenModel.swift */,
 				0A40E9DD21A97C3200325D4F /* AuthorizationModel.swift */,
 				0A40E9DF21A98E0400325D4F /* ProfileRegisterModel.swift */,
+				DA7ACC3221A9C0810073E684 /* LoginViewController.swift */,
+				DA7ACC3421A9C0920073E684 /* RegisterViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -242,9 +248,11 @@
 				0A40E9DA21A94E8000325D4F /* CommentModel.swift in Sources */,
 				DA7ACC2521A957650073E684 /* IssueDataSource.swift in Sources */,
 				DA7ACC2321A956640073E684 /* IssuesListController.swift in Sources */,
+				DA7ACC3321A9C0810073E684 /* LoginViewController.swift in Sources */,
 				DA7ACBF021A85F120073E684 /* ViewController.swift in Sources */,
 				DA7ACC1021A89C350073E684 /* LocationManager.swift in Sources */,
 				DA7ACC0A21A877110073E684 /* ReportViewController.swift in Sources */,
+				DA7ACC3521A9C0920073E684 /* RegisterViewController.swift in Sources */,
 				DA7ACC2B21A97E990073E684 /* IssueViewController.swift in Sources */,
 				DA7ACC1B21A8BCAD0073E684 /* ImagePickerManager.swift in Sources */,
 				0A40E9DE21A97C3200325D4F /* AuthorizationModel.swift in Sources */,

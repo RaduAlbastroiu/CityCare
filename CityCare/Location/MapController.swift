@@ -13,7 +13,7 @@ class MapController {
     
     private var mkMapView: MKMapView
     private var shouldCenterMapOnLocation: Bool
-    private var currentLocation: CLLocation?
+    var currentLocation: CLLocation?
 
     var showIssues: Bool
     

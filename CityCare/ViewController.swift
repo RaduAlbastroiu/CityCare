@@ -38,6 +38,7 @@ class ViewController: UIViewController {
 
         getAllIssues()
         
+        checkAuthorization()
     }
     
     func checkAuthorization() {
@@ -93,6 +94,14 @@ class ViewController: UIViewController {
         coreElements.mapController?.centerMapOnLocation()
     }
 
+    @IBAction func profileButtonPress(_ sender: Any) {
+        if coreElements.isLoggedIn == true {
+            performSegue(withIdentifier: "ProfileSegue", sender: nil)
+        } else {
+            performSegue(withIdentifier: "LoginSegue", sender: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileSegue" {
             if let profileController = segue.destination as? ProfileViewController {
