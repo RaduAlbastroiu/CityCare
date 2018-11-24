@@ -11,6 +11,7 @@ import UIKit
 class IssueCell: UITableViewCell {
     
     @IBOutlet weak var issueTitleLabel: UILabel!
+    @IBOutlet weak var issueDescriptionLabel: UILabel!
     
     static var reuseIdentifier = "IssueCell"
     
@@ -26,6 +27,7 @@ class IssueCell: UITableViewCell {
     
     func configure(with issueModel: IssueModel) {
         issueTitleLabel.text = issueModel.title
+        issueDescriptionLabel.text = issueModel.description
     }
     
 }

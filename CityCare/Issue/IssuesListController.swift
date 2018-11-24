@@ -24,16 +24,41 @@ class IssuesListController: UITableViewController {
         tableView.dataSource = coreElements?.issueDataSource
     }
 
-    func dismissListController() {
-        dismiss(animated: true, completion: nil)
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 89
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "IssueSegue" {
+            if let issueViewController = segue.destination as? IssueViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                issueViewController.coreElements = coreElements
+                issueViewController.issueModel = coreElements?.issueDataSource.issue(at: indexPath)
+            }
+        }
     }
 
 }
 
 extension IssuesListController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
         
-        // try another request
+            var issueListWithName = [IssueModel]()
+            if let coreElements = coreElements, let issues = coreElements.allIssues {
+                for issue in issues {
+                    if issue.title.lowercased().range(of: searchText.lowercased()) != nil {
+                        issueListWithName.append(issue)
+                    } else if issue.description.lowercased().range(of: searchText.lowercased()) != nil {
+                        issueListWithName.append(issue)
+                    }
+                }
+            }
+            
+            coreElements?.issueDataSource.update(with: issueListWithName)
+            self.tableView.reloadData()
+        }
     }
 }
 

@@ -35,7 +35,6 @@ class IssueDataSource: NSObject, UITableViewDataSource {
         return issueCell
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }

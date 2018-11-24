@@ -25,6 +25,7 @@
 		DA7ACC2321A956640073E684 /* IssuesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2221A956640073E684 /* IssuesListController.swift */; };
 		DA7ACC2521A957650073E684 /* IssueDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2421A957650073E684 /* IssueDataSource.swift */; };
 		DA7ACC2721A958760073E684 /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2621A958760073E684 /* IssueCell.swift */; };
+		DA7ACC2B21A97E990073E684 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7ACC2A21A97E990073E684 /* IssueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		DA7ACC2221A956640073E684 /* IssuesListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuesListController.swift; sourceTree = "<group>"; };
 		DA7ACC2421A957650073E684 /* IssueDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDataSource.swift; sourceTree = "<group>"; };
 		DA7ACC2621A958760073E684 /* IssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
+		DA7ACC2A21A97E990073E684 /* IssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				0A40E9D921A94E8000325D4F /* CommentModel.swift */,
 				DA7ACC2421A957650073E684 /* IssueDataSource.swift */,
 				DA7ACC2621A958760073E684 /* IssueCell.swift */,
+				DA7ACC2A21A97E990073E684 /* IssueViewController.swift */,
 			);
 			path = Issue;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				DA7ACBF021A85F120073E684 /* ViewController.swift in Sources */,
 				DA7ACC1021A89C350073E684 /* LocationManager.swift in Sources */,
 				DA7ACC0A21A877110073E684 /* ReportViewController.swift in Sources */,
+				DA7ACC2B21A97E990073E684 /* IssueViewController.swift in Sources */,
 				DA7ACC1B21A8BCAD0073E684 /* ImagePickerManager.swift in Sources */,
 				DA7ACBEE21A85F120073E684 /* AppDelegate.swift in Sources */,
 				DA7ACC0C21A898ED0073E684 /* CoreElements.swift in Sources */,
