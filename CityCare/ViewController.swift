@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         var networkManager = NetworkManager()
         coreElements.networkManager = networkManager
-        
+
         getAllIssues()
     }
     
