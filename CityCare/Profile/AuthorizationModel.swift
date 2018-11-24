@@ -17,6 +17,6 @@ protocol AuthorizationModel {
 
 class AuthorizationStubData : AuthorizationModel {
     var profileData: ProfileModel = ProfileStubData()
-    var success = true
-    var statusCode = 0
+    var success = false
+    var statusCode = -1
 }

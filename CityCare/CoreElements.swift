@@ -13,7 +13,7 @@ class CoreElements {
     
     let accessTokenKey = "accessToken"
     let tokenTypeKey = "tokenType"
-    let email = "email"
+    let emailKey = "email"
     
     var mapController: MapController?
     var locationManager: LocationManager?
@@ -22,7 +22,6 @@ class CoreElements {
     var allIssues: [IssueModel]?
     var issueDataSource = IssueDataSource()
     
-    var profileData: ProfileModel?
     var authorizationModel: AuthorizationModel?
     
     var isLoggedIn = false

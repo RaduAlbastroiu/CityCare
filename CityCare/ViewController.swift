@@ -45,7 +45,7 @@ class ViewController: UIViewController {
             // set in local storage
             UserDefaults.standard.set(tokenData.accessToken, forKey: self.coreElements.accessTokenKey)
             UserDefaults.standard.set(tokenData.tokenType, forKey: self.coreElements.tokenTypeKey)
-            UserDefaults.standard.set(tokenData.userName, forKey: self.coreElements.email)      // username IS the email
+            UserDefaults.standard.set(tokenData.userName, forKey: self.coreElements.emailKey)      // username IS the email
         })
     }
     
@@ -74,14 +74,12 @@ class ViewController: UIViewController {
     func getProfileData(email: String) {
         coreElements.networkManager?.getUserData(userEmail: email, completitionHandler: { data in
             self.coreElements.authorizationModel = data
-            self.coreElements.profileData = data.profileData  // TODO: see what to do about this
         })
     }
     
     func registerUser(registerModel: ProfileRegisterModel) {
         coreElements.networkManager?.registerUser(registerModel: ProfileRegisterStubData(), completitionHandler: { data in
             self.coreElements.authorizationModel = data
-            self.coreElements.profileData = data.profileData // TODO: see what to do about this
         })
     }
     
