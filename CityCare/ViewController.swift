@@ -33,6 +33,18 @@ class ViewController: UIViewController {
         coreElements.locationManager = locationManager
         coreElements.locationManager?.delegate = coreElements.mapController
         
+        var networkManager = NetworkManager()
+        coreElements.networkManager = networkManager
+        
+        getAllIssues()
+    }
+    
+    func getAllIssues() {
+        coreElements.networkManager?.getIssues(completitionHandler: { issues in
+            if issues.count > 0 {
+                self.coreElements.allIssues = issues
+            }
+        })
     }
 
     @IBAction func centerMap(_ sender: Any) {
@@ -42,6 +54,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileSegue" {
             if let profileController = segue.destination as? ProfileViewController {
+                profileController.coreElements = coreElements
                 profileController.profileModel = profileData
             }
         } else if segue.identifier == "IssuesSegue" {

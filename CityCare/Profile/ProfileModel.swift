@@ -28,6 +28,7 @@ protocol ProfileModel {
     var age: Int { get set }
     var gender: Gender { get set }
     var profilePicture: UIImage? { get set }
+    var issues: [IssueModel] { get set }
 }
 
 class ProfileStubData : ProfileModel {
@@ -39,4 +40,5 @@ class ProfileStubData : ProfileModel {
     var age = 22
     var gender = Gender.female
     var profilePicture: UIImage? = nil
+    var issues = [IssueModel]()
 }

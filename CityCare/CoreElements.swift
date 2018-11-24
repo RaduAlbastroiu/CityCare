@@ -13,4 +13,8 @@ class CoreElements {
     
     var mapController: MapController?
     var locationManager: LocationManager?
+    var networkManager: NetworkManager?
+    
+    var allIssues: [IssueModel]?
+    var profileData: ProfileModel?
 }

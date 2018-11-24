@@ -10,10 +10,16 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    
+    var coreElements: CoreElements?
     var profileModel: ProfileModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     @IBAction func goBack(_ sender: Any) {

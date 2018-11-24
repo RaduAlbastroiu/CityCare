@@ -231,6 +231,11 @@
                             <outletCollection property="gestureRecognizers" destination="7m5-Qt-gze" appends="YES" id="6w4-VI-dSp"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="ageLabel" destination="QSD-C5-G5u" id="qk9-2w-oo1"/>
+                        <outlet property="fullNameLabel" destination="430-X2-1wq" id="djL-24-QkX"/>
+                        <outlet property="genderLabel" destination="U9S-nl-tAl" id="VPv-cw-ubY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivl-aL-8c7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="7m5-Qt-gze">
