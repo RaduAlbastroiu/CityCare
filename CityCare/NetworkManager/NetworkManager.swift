@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkManager: NSObject {
     
@@ -41,7 +42,8 @@ class NetworkManager: NSObject {
                                     let createdAt = issueDict["CreatedAt"] as? Double,
                                     let createdBy = issueDict["CreatedBy"] as? String,
                                     let creator = issueDict["Creator"] as? String,
-                                    let comments = issueDict["Comments"] as? [Any] {
+                                    let comments = issueDict["Comments"] as? [Any],
+                                    let images = issueDict["Images"] as? [String] {
 
                                     let issueModel = IssueStubData()
                                     issueModel.id = id
@@ -74,6 +76,10 @@ class NetworkManager: NSObject {
                                             issueModel.comments.append(commentModel)
                                         }
                                     }
+                                    
+                                    for imageUrl in images {
+                                        issueModel.images.append(self.downloadImage(from: URL(string: imageUrl)!))
+                                    }
 
                                     issuesData.append(issueModel)
                                 }
@@ -94,4 +100,23 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadImage(from url: URL) -> UIImage {
+        print("Download Started")
+        var image = UIImage()
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+               image = UIImage(data: data)!
+            }
+        }
+        return image
+    }
 }
+
+
