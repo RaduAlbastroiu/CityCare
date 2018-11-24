@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
                     
                     UserDefaults.standard.set(tokenModel.accessToken, forKey: self.coreElements!.accessTokenKey)
                     UserDefaults.standard.set(tokenModel.tokenType, forKey: self.coreElements!.tokenTypeKey)
-                    UserDefaults.standard.set(tokenModel.userName, forKey: self.coreElements!.email)
+                    UserDefaults.standard.set(tokenModel.userName, forKey: self.coreElements!.emailKey)
                     
                     self.coreElements?.authorizationModel?.profileData = tokenModel.userData
                     self.coreElements?.authorizationModel?.success = true

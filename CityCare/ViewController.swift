@@ -53,9 +53,9 @@ class ViewController: UIViewController {
     
     func checkAuthorization() {
 
-        if let email = UserDefaults.standard.string(forKey: "email"),
-            let tokenType = UserDefaults.standard.string(forKey: "tokenType"),
-            let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
+        if let email = UserDefaults.standard.string(forKey: self.coreElements.accessTokenKey),
+            let tokenType = UserDefaults.standard.string(forKey: self.coreElements.tokenTypeKey),
+            let accessToken = UserDefaults.standard.string(forKey: self.coreElements.emailKey) {
 
             isAuthorized(email: email, tokenType: tokenType, accessToken: accessToken)
         } else {
