@@ -20,7 +20,7 @@ protocol IssueModel {
     var createdAt: Date { get set }
     var createdBy: String { get set }
     var creator: String { get set }
-    var comments: [String] { get set }
+    var comments: [CommentModel] { get set }
     var images: [UIImage] { get set }
 }
 
@@ -35,6 +35,6 @@ class IssueStubData : IssueModel {
     var createdAt = Date.init(timeIntervalSince1970: 1542981984402)
     var createdBy = "adebef04-b1ee-462c-9da2-01182652e45d"
     var creator = "Deventure User"
-    var comments = [String]()
+    var comments = [CommentModel]()
     var images = [UIImage]()
 }

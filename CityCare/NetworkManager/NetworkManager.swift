@@ -40,7 +40,8 @@ class NetworkManager: NSObject {
                                     let downVotes = issueDict["DownVotes"] as? Int,
                                     let createdAt = issueDict["CreatedAt"] as? Double,
                                     let createdBy = issueDict["CreatedBy"] as? String,
-                                    let creator = issueDict["Creator"] as? String {
+                                    let creator = issueDict["Creator"] as? String,
+                                    let comments = issueDict["Comments"] as? [Any] {
 
                                     let issueModel = IssueStubData()
                                     issueModel.id = id
@@ -54,6 +55,26 @@ class NetworkManager: NSObject {
                                     issueModel.createdBy = createdBy
                                     issueModel.creator = creator
                                     
+                                    // Add comments to issue model
+                                    for comment in comments {
+                                        if let commentDict = comment as? [String:Any],
+                                            let id = commentDict["Id"] as? String,
+                                            let content = commentDict["Content"] as? String,
+                                            let creator = commentDict["Creator"] as? String,
+                                            let createdAt = commentDict["CreatedAt"] as? Double,
+                                            let edited = commentDict["EditedAt"] as? Int {
+                                            
+                                            let commentModel = CommentStubData()
+                                            commentModel.id = id
+                                            commentModel.content = content
+                                            commentModel.creator = creator
+                                            commentModel.createdAt = Date.init(timeIntervalSince1970: createdAt)
+                                            commentModel.edited = edited
+                                            
+                                            issueModel.comments.append(commentModel)
+                                        }
+                                    }
+
                                     issuesData.append(issueModel)
                                 }
                             }
