@@ -27,6 +27,11 @@ class ProfileViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func logOut(_ sender: Any) {
+        coreElements?.logout()
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

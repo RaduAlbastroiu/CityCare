@@ -33,7 +33,6 @@ class LoginViewController: UIViewController {
             coreElements?.networkManager?.loginUser(email: email, password: password, completitionHandler: { (tokenModel) in
                
                 if tokenModel.expiresIn == -1 {
-                    self.errorMessageLabel.isHidden = false
                     self.coreElements?.loginFailed()
                 } else {
                     self.coreElements?.loginSucceded(tokenModel: tokenModel)

@@ -308,29 +308,36 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="430-X2-1wq">
-                                        <rect key="frame" x="217.5" y="32" width="77" height="21"/>
+                                        <rect key="frame" x="217.5" y="40" width="77" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your issues:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP7-Lw-7GF">
-                                        <rect key="frame" x="16" y="260.5" width="92" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reported Issues:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP7-Lw-7GF">
+                                        <rect key="frame" x="16" y="260.5" width="129" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSD-C5-G5u">
-                                        <rect key="frame" x="217.5" y="61" width="30" height="21"/>
+                                        <rect key="frame" x="217.5" y="69" width="30" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9S-nl-tAl">
-                                        <rect key="frame" x="217.5" y="90" width="57" height="21"/>
+                                        <rect key="frame" x="217.5" y="98" width="57" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Six-Qi-NvG">
+                                        <rect key="frame" x="343" y="0.0" width="55" height="30"/>
+                                        <state key="normal" title="Log Out"/>
+                                        <connections>
+                                            <action selector="logOut:" destination="x8B-f1-mvq" eventType="touchUpInside" id="YJU-eZ-l9r"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -339,10 +346,12 @@
                                     <constraint firstAttribute="bottomMargin" secondItem="wP7-Lw-7GF" secondAttribute="bottom" constant="8" id="A49-zi-ZYl"/>
                                     <constraint firstItem="QSD-C5-G5u" firstAttribute="leading" secondItem="SiR-5F-KcV" secondAttribute="trailing" constant="16" id="F0w-iH-ocg"/>
                                     <constraint firstItem="SiR-5F-KcV" firstAttribute="leading" secondItem="cPy-6L-UaI" secondAttribute="leading" constant="8" id="HOx-aB-bEv"/>
-                                    <constraint firstItem="430-X2-1wq" firstAttribute="top" secondItem="cPy-6L-UaI" secondAttribute="topMargin" constant="24" id="Omg-hb-Ds1"/>
+                                    <constraint firstItem="430-X2-1wq" firstAttribute="top" secondItem="cPy-6L-UaI" secondAttribute="topMargin" constant="32" id="Omg-hb-Ds1"/>
                                     <constraint firstItem="U9S-nl-tAl" firstAttribute="top" secondItem="QSD-C5-G5u" secondAttribute="bottom" constant="8" id="Rxh-0C-TPz"/>
+                                    <constraint firstItem="Six-Qi-NvG" firstAttribute="top" secondItem="cPy-6L-UaI" secondAttribute="top" id="Wuv-BN-WP9"/>
                                     <constraint firstItem="wP7-Lw-7GF" firstAttribute="leading" secondItem="cPy-6L-UaI" secondAttribute="leadingMargin" constant="8" id="ZAL-7g-06Q"/>
                                     <constraint firstItem="QSD-C5-G5u" firstAttribute="top" secondItem="430-X2-1wq" secondAttribute="bottom" constant="8" id="adp-hR-0JD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Six-Qi-NvG" secondAttribute="trailing" constant="16" id="cH3-LZ-NbY"/>
                                     <constraint firstItem="U9S-nl-tAl" firstAttribute="leading" secondItem="SiR-5F-KcV" secondAttribute="trailing" constant="16" id="dKj-3N-uT3"/>
                                     <constraint firstItem="430-X2-1wq" firstAttribute="leading" secondItem="SiR-5F-KcV" secondAttribute="trailing" constant="16" id="mnf-38-rXx"/>
                                 </constraints>

@@ -12,7 +12,6 @@ protocol AuthorizationModel {
     var profileData: ProfileModel { get set }
     var success: Bool { get set }
     var statusCode: Int { get set }
-    
 }
 
 class AuthorizationStubData : AuthorizationModel {

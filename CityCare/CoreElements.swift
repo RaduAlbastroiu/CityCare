@@ -27,7 +27,7 @@ class CoreElements {
     var isLoggedIn = false
     
     func authorizationFailed() {
-        self.authorizationModel = nil
+        self.authorizationModel = AuthorizationStubData()
         self.isLoggedIn = false
         UserDefaults.standard.set(nil, forKey: self.accessTokenKey)
         UserDefaults.standard.set(nil, forKey: self.tokenTypeKey)
