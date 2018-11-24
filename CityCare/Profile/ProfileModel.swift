@@ -46,7 +46,7 @@ class ProfileStubData : ProfileModel {
     var id = "adebef04-b1ee-462c-9da2-01182652e45d"
     var fullName = "Deventure User"
     var latitude = 22.0
-    var longitude = 44.0
+    var longitude = 11144.0
     var radius = 0.0
     var age = 22
     var gender = Gender.female
