@@ -66,7 +66,6 @@ class NetworkManager: NSObject {
         let task = session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, let httpResponse = response as? HTTPURLResponse else {
-                    completion(AuthorizationStubData())
                     return
                 }
                 
@@ -110,7 +109,6 @@ class NetworkManager: NSObject {
         let task = session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, let httpResponse = response as? HTTPURLResponse else {
-                    completion(AuthorizationStubData())
                     return
                 }
                 
@@ -142,31 +140,32 @@ class NetworkManager: NSObject {
         task.resume()
     }
     
+    func loginUser(email: String, password: String, CompletitionHandler completion:@escaping (TokenModel) -> Void) {
+        
+    }
+    
     func registerUser(registerModel: ProfileRegisterModel, completitionHandler completion:@escaping (AuthorizationModel) -> Void) {
 
         let registerUrl = URL(string: registerUserStr)!
         var request = URLRequest(url: registerUrl)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        var json = registerModel.toJson()
-        print(json)
 
+        let json = registerModel.toJson()
         request.httpBody = json.data(using: .utf8)
        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
+            guard let data = data, let httpResponse = response as? HTTPURLResponse else {
                 return
             }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print(httpStatus.statusCode)
-                print("response = \(response)")
+
+            let status = httpResponse.statusCode
+            if(status == 200) {
+                let responseString = String(data: data, encoding: .utf8)
             }
             
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
         }
+        // start task
         task.resume()
     }
 

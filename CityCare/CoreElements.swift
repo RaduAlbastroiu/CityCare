@@ -20,4 +20,5 @@ class CoreElements {
     
     var profileData: ProfileModel?
     var authorizationModel: AuthorizationModel?
+    var isLoggedIn = false
 }

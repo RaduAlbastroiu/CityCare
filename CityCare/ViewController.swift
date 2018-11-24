@@ -37,10 +37,20 @@ class ViewController: UIViewController {
         coreElements.networkManager = networkManager
 
         getAllIssues()
-        coreElements.networkManager?.registerUser(registerModel: ProfileRegisterStubData(), completitionHandler: { data in
-            self.coreElements.authorizationModel = data
-            self.coreElements.profileData = data.profileData // TODO: see what to do about this
-        })
+        
+    }
+    
+    func checkAuthorization() {
+
+        if let email = UserDefaults.standard.string(forKey: "email"),
+            let tokenType = UserDefaults.standard.string(forKey: "tokenType"),
+            let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
+
+            isAuthorized(email: email, tokenType: tokenType, accessToken: accessToken)
+        } else {
+            self.coreElements.authorizationModel = nil
+            self.coreElements.isLoggedIn = false
+        }
     }
     
     func getAllIssues() {
@@ -59,10 +69,23 @@ class ViewController: UIViewController {
         })
     }
     
-    func isAuthorized(email:String, tokenType: String, accessToken: String) {
-        coreElements.networkManager?.isAuthorized(userEmail: email, tokenType: tokenType, accessToken: accessToken, completitionHandler: { data in
+    func registerUser(registerModel: ProfileRegisterModel) {
+        coreElements.networkManager?.registerUser(registerModel: ProfileRegisterStubData(), completitionHandler: { data in
             self.coreElements.authorizationModel = data
             self.coreElements.profileData = data.profileData // TODO: see what to do about this
+        })
+    }
+    
+    func isAuthorized(email:String, tokenType: String, accessToken: String) {
+        
+        coreElements.networkManager?.isAuthorized(userEmail: email, tokenType: tokenType, accessToken: accessToken, completitionHandler: { data in
+            if data.success == false {
+                self.coreElements.authorizationModel = nil
+                self.coreElements.isLoggedIn = false
+            } else {
+                self.coreElements.authorizationModel = data
+                self.coreElements.isLoggedIn = true
+            }
         })
     }
 
