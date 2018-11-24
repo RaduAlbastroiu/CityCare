@@ -165,7 +165,7 @@ class NetworkManager: NSObject {
             issueModel.longitude = longitude
             issueModel.upVotes = upVotes
             issueModel.downVotes = downVotes
-            issueModel.createdAt = Date.init(timeIntervalSince1970: createdAt)
+            issueModel.createdAt = Date.init(timeIntervalSince1970: createdAt/1000)
             issueModel.createdBy = createdBy
             issueModel.creator = creator
             
@@ -182,7 +182,7 @@ class NetworkManager: NSObject {
                     commentModel.id = id
                     commentModel.content = content
                     commentModel.creator = creator
-                    commentModel.createdAt = Date.init(timeIntervalSince1970: createdAt)
+                    commentModel.createdAt = Date.init(timeIntervalSince1970: createdAt/1000)
                     commentModel.edited = edited
                     
                     issueModel.comments.append(commentModel)
