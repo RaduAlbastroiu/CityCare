@@ -395,6 +395,31 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hu-Eg-AGV">
                                 <rect key="frame" x="0.0" y="539.5" width="414" height="322.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="Xnn-Fx-s4t" customClass="CommentCell" customModule="CityCare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xnn-Fx-s4t" id="a7P-k5-ZLO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyL-aO-VJd">
+                                                    <rect key="frame" x="28" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cyL-aO-VJd" firstAttribute="centerY" secondItem="a7P-k5-ZLO" secondAttribute="centerY" id="CXf-cx-Req"/>
+                                                <constraint firstItem="cyL-aO-VJd" firstAttribute="leading" secondItem="a7P-k5-ZLO" secondAttribute="leadingMargin" constant="8" id="DGc-IU-H0X"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="cyL-aO-VJd" id="wIQ-i3-pGC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpN-Ni-wBY">
                                 <rect key="frame" x="0.0" y="88" width="414" height="451.5"/>
@@ -503,6 +528,7 @@
                         <outlet property="descriptionLabel" destination="Q7v-gp-ZIn" id="4EN-2C-zUb"/>
                         <outlet property="downVotesLabel" destination="8sD-WJ-TBn" id="kiE-p7-8eo"/>
                         <outlet property="issueTitleLabel" destination="OB3-6z-2jJ" id="v5n-kz-jag"/>
+                        <outlet property="tableView" destination="3hu-Eg-AGV" id="yiR-7U-IxT"/>
                         <outlet property="upVotesLabel" destination="RNw-pQ-xyx" id="oxq-ex-7w7"/>
                     </connections>
                 </viewController>
