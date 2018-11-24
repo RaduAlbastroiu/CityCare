@@ -19,4 +19,5 @@ class CoreElements {
     var issueDataSource = IssueDataSource()
     
     var profileData: ProfileModel?
+    var authorizationModel: AuthorizationModel?
 }
