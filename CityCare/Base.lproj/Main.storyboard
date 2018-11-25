@@ -854,10 +854,65 @@
                     <view key="view" contentMode="scaleToFill" id="OHt-hM-xRK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFs-hk-jTz">
+                                <rect key="frame" x="106.5" y="338" width="201" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jb-rG-gJJ">
+                                <rect key="frame" x="159" y="519" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Comment here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vFw-fL-rZD">
+                                <rect key="frame" x="82" y="404" width="250" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="SJ2-PU-aoG"/>
+                                    <constraint firstAttribute="height" constant="90" id="X5W-gL-pwq"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeZ-Az-Gf6">
+                                <rect key="frame" x="97" y="772" width="220" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.60784313729999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="216-Ax-tAr"/>
+                                    <constraint firstAttribute="height" constant="60" id="UCq-p8-49h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="qvu-1O-3Om" eventType="touchUpInside" id="mcr-ri-86f"/>
+                                    <action selector="submitComment:" destination="MeD-ek-ath" eventType="touchUpInside" id="riN-vb-gsO"/>
+                                    <action selector="submitForm:" destination="si2-ql-VMz" eventType="touchUpInside" id="QPB-20-3IK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HFs-hk-jTz" firstAttribute="centerX" secondItem="OHt-hM-xRK" secondAttribute="centerX" id="2gM-I4-2BY"/>
+                            <constraint firstItem="8jb-rG-gJJ" firstAttribute="top" secondItem="vFw-fL-rZD" secondAttribute="bottom" constant="25" id="3LY-Ch-bho"/>
+                            <constraint firstItem="HFs-hk-jTz" firstAttribute="top" secondItem="fok-BD-tNJ" secondAttribute="top" constant="250" id="8jo-9I-lrw"/>
+                            <constraint firstItem="8jb-rG-gJJ" firstAttribute="centerX" secondItem="OHt-hM-xRK" secondAttribute="centerX" id="AKC-Nd-gsh"/>
+                            <constraint firstItem="OeZ-Az-Gf6" firstAttribute="bottom" secondItem="fok-BD-tNJ" secondAttribute="bottom" constant="-30" id="Bob-Ef-CHm"/>
+                            <constraint firstItem="vFw-fL-rZD" firstAttribute="top" secondItem="HFs-hk-jTz" secondAttribute="bottom" constant="30" id="Pns-ZS-iYt"/>
+                            <constraint firstItem="vFw-fL-rZD" firstAttribute="centerX" secondItem="OHt-hM-xRK" secondAttribute="centerX" id="egF-Rs-U2n"/>
+                            <constraint firstItem="OeZ-Az-Gf6" firstAttribute="centerX" secondItem="OHt-hM-xRK" secondAttribute="centerX" id="rRH-Rx-sQS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fok-BD-tNJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="TjJ-JF-hZE"/>
+                    <connections>
+                        <outlet property="commentTextField" destination="vFw-fL-rZD" id="Gv5-Q4-o28"/>
+                        <outlet property="invalidDataLabel" destination="8jb-rG-gJJ" id="BNr-0M-oRh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CR-Oj-KXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

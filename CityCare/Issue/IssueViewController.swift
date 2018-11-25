@@ -51,7 +51,15 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
     }
     
     @IBAction func addComment(_ sender: Any) {
-        print("Add comment")
+        performSegue(withIdentifier: "AddCommentSegue", sender: nil)
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddCommentSegue" {
+            if let addCommentController = segue.destination as? AddCommentViewController {
+                addCommentController.coreElements = coreElements
+                addCommentController.issueId = (issueModel?.id)!
+            }
+        }
+    }
 }
