@@ -151,6 +151,7 @@
                         <segue destination="x8B-f1-mvq" kind="presentation" identifier="ProfileSegue" id="XTg-8I-tYS"/>
                         <segue destination="sTE-el-CDb" kind="presentation" identifier="LoginSegue" id="Fjk-mT-Cqu"/>
                         <segue destination="qvu-1O-3Om" kind="presentation" identifier="ReportSegue" id="5WB-KP-lvz"/>
+                        <segue destination="iYI-uo-H4a" kind="presentation" identifier="MapIssueSegue" id="8P4-7s-w9n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6d-co-3Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -693,7 +694,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3hu-Eg-AGV">
-                                <rect key="frame" x="0.0" y="539.5" width="414" height="322.5"/>
+                                <rect key="frame" x="0.0" y="521" width="414" height="341"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="Xnn-Fx-s4t" customClass="CommentCell" customModule="CityCare" customModuleProvider="target">
@@ -722,16 +723,16 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpN-Ni-wBY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="451.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="477"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjf-o2-grR">
-                                        <rect key="frame" x="16" y="419.5" width="101" height="24"/>
+                                        <rect key="frame" x="16" y="445" width="101" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XI2-cA-dvm">
-                                        <rect key="frame" x="281" y="409.5" width="117" height="34"/>
+                                        <rect key="frame" x="281" y="435" width="117" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Add Comment"/>
                                         <connections>
@@ -887,6 +888,6 @@
         <image name="TargetIcon" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ri7-ds-fuS"/>
+        <segue reference="8P4-7s-w9n"/>
     </inferredMetricsTieBreakers>
 </document>

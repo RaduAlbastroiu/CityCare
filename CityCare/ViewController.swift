@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var locationManager = LocationManager()
     var profileData = ProfileStubData()
     var issueData = IssueStubData()
+    var issuesSelectedFromMap: IssueModel?
     
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var mainButton: UIButton!
@@ -31,7 +32,8 @@ class ViewController: UIViewController {
         centerMapButton.layer.cornerRadius = 25
         centerMapButton.clipsToBounds = true
         
-        coreElements.mapController = MapController(mapView: mapView)
+        coreElements.mapController = MapController(mapView: mapView, viewController: self)
+        coreElements.mapController?.coreElements = coreElements
         coreElements.locationManager = locationManager
         coreElements.locationManager?.delegate = coreElements.mapController
         
@@ -47,6 +49,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.updateLoginMessage()
         self.getUserData()
+        self.coreElements.networkManager!.getAllIssues()
         if let allIssues = coreElements.allIssues {
             coreElements.issueDataSource.update(with: allIssues)
         }
@@ -106,6 +109,11 @@ class ViewController: UIViewController {
             self.coreElements.authorizationModel = data
         })
     }
+    
+    func performSegueToIssue(withIssue: IssueModel) {
+        self.issuesSelectedFromMap = withIssue
+        performSegue(withIdentifier: "MapIssueSegue", sender: nil)
+    }
 
     @IBAction func centerMap(_ sender: Any) {
         coreElements.mapController?.centerMapOnLocation()
@@ -137,6 +145,11 @@ class ViewController: UIViewController {
         } else if segue.identifier == "ReportSegue" {
             if let reportViewController = segue.destination as? ReportViewController {
                 reportViewController.coreElements = self.coreElements
+            }
+        } else if segue.identifier == "MapIssueSegue" {
+            if let issueViewController = segue.destination as? IssueViewController {
+                issueViewController.coreElements = self.coreElements
+                issueViewController.issueModel = self.issuesSelectedFromMap
             }
         }
     }
