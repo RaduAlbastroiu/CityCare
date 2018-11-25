@@ -318,6 +318,7 @@ class NetworkManager: NSObject {
         print(json)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                completion(false)
                 return
             }
             

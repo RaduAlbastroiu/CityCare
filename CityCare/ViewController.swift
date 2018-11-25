@@ -15,7 +15,9 @@ class ViewController: UIViewController {
     var locationManager = LocationManager()
     var profileData = ProfileStubData()
     var issueData = IssueStubData()
-
+    
+    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var reportIssueButton: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var centerMapButton: UIButton!
@@ -42,6 +44,11 @@ class ViewController: UIViewController {
         checkAuthorization()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.updateLoginMessage()
+        self.getUserData()
+    }
+    
     func checkAuthorization() {
         if let email = UserDefaults.standard.string(forKey: coreElements.emailKey),
             let tokenType = UserDefaults.standard.string(forKey: coreElements.tokenTypeKey),
@@ -53,10 +60,42 @@ class ViewController: UIViewController {
                 } else {
                     self.coreElements.authorizationSucceded(authorization: authorizationModel)
                 }
+                
+                DispatchQueue.main.async {
+                    self.updateLoginMessage()
+                }
             })
         } else {
             self.coreElements.authorizationFailed()
         }
+    }
+    
+    @IBAction func mainButtonPress(_ sender: Any) {
+        if(coreElements.isLoggedIn == false) {
+            performSegue(withIdentifier: "LoginSegue", sender: nil)
+        } else {
+            performSegue(withIdentifier: "ReportSegue", sender: nil)
+        }
+    }
+    
+    func updateLoginMessage() {
+        if(coreElements.isLoggedIn == false) {
+            mainButton.setTitle("Login",for: .normal)
+            mainLabel.text = "You must be logged in to report"
+        } else {
+            mainButton.setTitle("Report Issue",for: .normal)
+            mainLabel.text = "Wanna report?"
+        }
+    }
+    
+    func getUserData() {
+        let email = UserDefaults.standard.string(forKey: coreElements.emailKey)
+        
+        coreElements.networkManager?.getUserData(userEmail: email!, completitionHandler: { (authorizationModel) in
+            if authorizationModel.success {
+                self.coreElements.authorizationModel = authorizationModel
+            }
+        })
     }
     
     func registerUser(registerModel: ProfileRegisterModel) {
@@ -91,6 +130,10 @@ class ViewController: UIViewController {
         } else if segue.identifier == "LoginSegue" {
             if let loginViewController = segue.destination as? LoginViewController {
                 loginViewController.coreElements = self.coreElements
+            }
+        } else if segue.identifier == "ReportSegue" {
+            if let reportViewController = segue.destination as? ReportViewController {
+                reportViewController.coreElements = self.coreElements
             }
         }
     }
