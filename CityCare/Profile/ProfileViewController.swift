@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         fullNameLabel.text = coreElements?.authorizationModel?.profileData.fullName
-        ageLabel.text = "Age: " + "22"
     }
     
     @IBAction func goBack(_ sender: Any) {
