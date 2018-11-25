@@ -47,6 +47,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.updateLoginMessage()
         self.getUserData()
+        if let allIssues = coreElements.allIssues {
+            coreElements.issueDataSource.update(with: allIssues)
+        }
     }
     
     func checkAuthorization() {
@@ -89,13 +92,13 @@ class ViewController: UIViewController {
     }
     
     func getUserData() {
-        let email = UserDefaults.standard.string(forKey: coreElements.emailKey)
-        
-        coreElements.networkManager?.getUserData(userEmail: email!, completitionHandler: { (authorizationModel) in
-            if authorizationModel.success {
-                self.coreElements.authorizationModel = authorizationModel
-            }
-        })
+        if let email = UserDefaults.standard.string(forKey: coreElements.emailKey) {
+            coreElements.networkManager?.getUserData(userEmail: email, completitionHandler: { (authorizationModel) in
+                if authorizationModel.success {
+                    self.coreElements.authorizationModel = authorizationModel
+                }
+            })
+        }
     }
     
     func registerUser(registerModel: ProfileRegisterModel) {
