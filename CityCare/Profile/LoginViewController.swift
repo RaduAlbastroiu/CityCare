@@ -40,7 +40,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                
                 if tokenModel.expiresIn == -1 {
                     self.coreElements?.loginFailed()
-                    self.errorMessageLabel.isHidden = false
+                    DispatchQueue.main.async {
+                        self.errorMessageLabel.isHidden = false
+                    }
                 } else {
                     self.coreElements?.loginSucceded(tokenModel: tokenModel)
                     self.dismiss(animated: true, completion: nil)
