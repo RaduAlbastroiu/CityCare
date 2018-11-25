@@ -24,6 +24,12 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func goBack(_ sender: Any) {
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        view.layer.add(transition, forKey: "rightToLeftTransition")
         dismiss(animated: true, completion: nil)
     }
     

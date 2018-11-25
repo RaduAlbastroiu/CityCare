@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A3EBA3621AA4E80009CF795 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EBA3521AA4E80009CF795 /* AddCommentViewController.swift */; };
 		0A40E9D821A8B3AF00325D4F /* IssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A40E9D721A8B3AF00325D4F /* IssueModel.swift */; };
 		0A40E9DA21A94E8000325D4F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A40E9D921A94E8000325D4F /* CommentModel.swift */; };
 		0A40E9DC21A9742000325D4F /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A40E9DB21A9742000325D4F /* TokenModel.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A3EBA3521AA4E80009CF795 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		0A40E9D721A8B3AF00325D4F /* IssueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueModel.swift; sourceTree = "<group>"; };
 		0A40E9D921A94E8000325D4F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		0A40E9DB21A9742000325D4F /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				DA7ACC2A21A97E990073E684 /* IssueViewController.swift */,
 				DA7ACC2E21A990280073E684 /* CommentsDataSource.swift */,
 				DA7ACC3021A990A00073E684 /* CommentCell.swift */,
+				0A3EBA3521AA4E80009CF795 /* AddCommentViewController.swift */,
 			);
 			path = Issue;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				DA7ACC1F21A923C00073E684 /* NetworkManager.swift in Sources */,
 				DA7ACC1521A8A98E0073E684 /* ProfileModel.swift in Sources */,
 				DA7ACC0621A874700073E684 /* ProfileViewController.swift in Sources */,
+				0A3EBA3621AA4E80009CF795 /* AddCommentViewController.swift in Sources */,
 				DA7ACC0E21A899260073E684 /* MapController.swift in Sources */,
 				0A40E9D821A8B3AF00325D4F /* IssueModel.swift in Sources */,
 				DA7ACC2721A958760073E684 /* IssueCell.swift in Sources */,
