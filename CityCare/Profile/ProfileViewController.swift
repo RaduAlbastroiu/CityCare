@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
@@ -20,7 +21,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         fullNameLabel.text = coreElements?.authorizationModel?.profileData.fullName
-        
+        ageLabel.text = "Age: " + "22"
     }
     
     @IBAction func goBack(_ sender: Any) {
