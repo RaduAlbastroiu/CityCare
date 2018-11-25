@@ -278,7 +278,7 @@ class NetworkManager: NSObject {
         
         let json = userModel.updatedJson()
         request.httpBody = json.data(using: .utf8)
-        print(json)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let httpResponse = response as? HTTPURLResponse else {
                 return
@@ -315,7 +315,7 @@ class NetworkManager: NSObject {
         
         let json = issueModel.toJson()
         request.httpBody = json.data(using: .utf8)
-        print(json)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let httpResponse = response as? HTTPURLResponse else {
                 return
@@ -344,7 +344,7 @@ class NetworkManager: NSObject {
         
         let json = commentModel.toJson(issueId: issueId)
         request.httpBody = json.data(using: .utf8)
-        print(json)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let httpResponse = response as? HTTPURLResponse else {
                 return
