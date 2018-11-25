@@ -42,8 +42,11 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
             descriptionLabel.text = issueModel.description
             upVotesLabel.text = String(issueModel.upVotes)
             downVotesLabel.text = String(issueModel.downVotes)
-
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     @IBAction func goBack(_ sender: Any) {

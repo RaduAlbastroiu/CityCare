@@ -61,6 +61,9 @@ class AddCommentViewController: UIViewController, UITextFieldDelegate {
             coreElements?.networkManager?.addComment(commentModel: commentModel, issueId: issueId, tokenType: tokenType!, accessToken: accessToken!, completitionHandler: { (succeded) in
                 print(succeded)
                 if succeded {
+                    
+                    self.coreElements?.networkManager?.getAllIssues()
+                    
                     DispatchQueue.main.async {
                         let transition = CATransition()
                         transition.duration = 0.3
