@@ -846,10 +846,10 @@
             </objects>
             <point key="canvasLocation" x="3931.884057971015" y="1583.7053571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Comment View Controller-->
         <scene sceneID="wz4-2x-9ZC">
             <objects>
-                <viewController id="MeD-ek-ath" sceneMemberID="viewController">
+                <viewController id="MeD-ek-ath" customClass="AddCommentViewController" customModule="CityCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OHt-hM-xRK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
