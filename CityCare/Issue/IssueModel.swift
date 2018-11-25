@@ -38,3 +38,9 @@ class IssueStubData : IssueModel {
     var comments = [CommentModel]()
     var images = [UIImage]()
 }
+
+extension IssueModel {
+    func toJson() -> String {
+         return "{ \"Id\": \"" + id + "\", \"Title\": \"" + title + "\", \"Description\": \"" + description + "\", \"Latitude\": " + String(latitude) + ", \"Longitude\": " + String(longitude) + ", \"CreatedBy\": \"" + createdBy + "\"}"
+    }
+}

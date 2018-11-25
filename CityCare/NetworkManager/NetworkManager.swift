@@ -18,6 +18,7 @@ class NetworkManager: NSObject {
     var registerUserStr = "http://itec-api.deventure.co/api/Account/Register";
     var loginUserStr = "http://itec-api.deventure.co/api/Token";
     var addCommentStr = "http://itec-api.deventure.co/api/Comment/Create";
+    var addIssueStr = "http://itec-api.deventure.co/api/Issue/Create";
     var updateUserStr = "http://itec-api.deventure.co/api/Account/Update";
 
     var coreElements: CoreElements?
@@ -303,7 +304,34 @@ class NetworkManager: NSObject {
         task.resume()
     }
 
-
+    func addIssue(issueModel: IssueModel, tokenType: String, accessToken:String, completitionHandler completion:@escaping (Bool) -> Void) {
+        // build request url
+        let addIssueUrl = URL(string: addIssueStr)!
+        var request = URLRequest(url: addIssueUrl)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let x = tokenType + " " + accessToken
+        request.setValue(x, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        
+        let json = issueModel.toJson()
+        request.httpBody = json.data(using: .utf8)
+        print(json)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+            
+            let status = httpResponse.statusCode
+            if(status == 200) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        // start task
+        task.resume()
+    }
+    
     func addComment(commentModel: CommentModel, issueId: String, tokenType: String, accessToken:String, completitionHandler completion:@escaping (Bool) -> Void) {
         
         // build request url
