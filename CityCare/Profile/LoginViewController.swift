@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     var coreElements: CoreElements?
     
@@ -24,6 +24,12 @@ class LoginViewController: UIViewController {
 
         loginButtonView.layer.cornerRadius = 10
         loginButtonView.clipsToBounds = true
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func login(_ sender: Any) {
@@ -34,6 +40,7 @@ class LoginViewController: UIViewController {
                
                 if tokenModel.expiresIn == -1 {
                     self.coreElements?.loginFailed()
+                    self.errorMessageLabel.isHidden = false
                 } else {
                     self.coreElements?.loginSucceded(tokenModel: tokenModel)
                     self.dismiss(animated: true, completion: nil)
@@ -49,6 +56,37 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 50
+            }
+        }
+    }
     
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 50
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RegisterSegue" {
+            if let registerViewController = segue.destination as? RegisterViewController {
+                registerViewController.coreElements = coreElements
+            }
+        }
+    }
     
 }
