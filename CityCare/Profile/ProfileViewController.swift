@@ -22,6 +22,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         fullNameLabel.text = coreElements?.authorizationModel?.profileData.fullName
+        if let age = coreElements?.authorizationModel?.profileData.age {
+            ageLabel.text = "age: " + String(age)
+        }
+        if let gender = coreElements?.authorizationModel?.profileData.gender {
+            if(gender.get() == 1) {
+                genderLabel.text = "gender: Male"
+            } else if(gender.get() == 0) {
+                genderLabel.text = "gender: Female"
+            } else {
+                genderLabel.text = "gender: not specified"
+            }
+            
+        }
         
         if let personalIssues = coreElements?.authorizationModel?.profileData.issues {
             coreElements?.issueDataSource.update(with: personalIssues)

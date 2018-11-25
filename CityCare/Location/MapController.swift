@@ -9,15 +9,16 @@
 import Foundation
 import MapKit
 
-class MapController {
+class MapController: NSObject, MKMapViewDelegate {
     
     private var mkMapView: MKMapView
     private var shouldCenterMapOnLocation: Bool
     var currentLocation: CLLocation?
-
     var showIssues: Bool
+    var coreElements: CoreElements?
+    var viewController: ViewController
     
-    init(mapView: MKMapView) {
+    init(mapView: MKMapView, viewController: ViewController) {
         self.showIssues = false
         self.mkMapView = mapView
         self.shouldCenterMapOnLocation = true
@@ -25,6 +26,38 @@ class MapController {
         mapView.showsTraffic = true
         mapView.showsCompass = true
         mapView.showsScale = true
+        self.viewController = viewController
+        
+        super.init()
+        mapView.delegate = self
+    }
+    
+    func addIssuesToMap(issues: [IssueModel]) {
+        for issue in issues {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate.latitude = issue.latitude
+            annotation.coordinate.longitude = issue.longitude
+            mkMapView.addAnnotation(annotation)
+        }
+    }
+    
+    func round2(_ value: Double, toNearest: Double) -> Double {
+        return round(value / toNearest) * toNearest
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let selectedAnnotaion = view.annotation as? MKPointAnnotation {
+            if let allIssues = coreElements?.allIssues {
+                for issue in allIssues {
+                    if(self.round2(issue.latitude, toNearest: 0.00001) == self.round2(selectedAnnotaion.coordinate.latitude, toNearest: 0.00001) &&
+                        self.round2(issue.longitude, toNearest: 0.00001) == self.round2(selectedAnnotaion.coordinate.longitude, toNearest: 0.00001)) {
+                        
+                        self.viewController.performSegueToIssue(withIssue: issue)
+                        break
+                    }
+                }
+            }
+        }
     }
     
     func centerMapOnLocation() {

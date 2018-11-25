@@ -29,6 +29,9 @@ class NetworkManager: NSObject {
             if issues.count > 0 {
                 self.coreElements?.allIssues = issues
                 self.coreElements?.issueDataSource.update(with: issues)
+                if let allIssues = self.coreElements?.allIssues {
+                    self.coreElements?.mapController?.addIssuesToMap(issues: allIssues)
+                }
             }
         })
     }
