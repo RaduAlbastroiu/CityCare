@@ -20,7 +20,8 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
     var coreElements: CoreElements?
     var issueModel: IssueModel?
     var commentsDataSource = CommentsDataSource()
-    
+    var showButtons = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +44,8 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
             upVotesLabel.text = String(issueModel.upVotes)
             downVotesLabel.text = String(issueModel.downVotes)
         }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +60,26 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
         performSegue(withIdentifier: "AddCommentSegue", sender: nil)
     }
 
+    @IBAction func deleteComment(_ sender: Any) {
+        let disableMyButton = sender as? UIButton
+        disableMyButton!.isEnabled = showButtons
+        // should delete
+        var id = ""
+        if let indexPath = tableView.indexPathForSelectedRow {
+            id = commentsDataSource.comment(at: indexPath).id
+        }
+        let tokenType = UserDefaults.standard.string(forKey: (coreElements?.tokenTypeKey)!)
+        let accessToken = UserDefaults.standard.string(forKey: (coreElements?.accessTokenKey)!)
+        coreElements?.networkManager?.deleteComment(id: id, tokenType: tokenType!, accessToken: accessToken!, completitionHandler: { (succeded) in
+                print(succeded)
+            })
+    }
+
+    @IBAction func editCommentButton(_ sender: Any) {
+        let disableMyButton = sender as? UIButton
+        disableMyButton!.isEnabled = showButtons
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddCommentSegue" {
             if let addCommentController = segue.destination as? AddCommentViewController {

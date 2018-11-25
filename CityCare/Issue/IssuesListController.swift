@@ -44,6 +44,7 @@ class IssuesListController: UITableViewController {
                 let indexPath = tableView.indexPathForSelectedRow {
                 issueViewController.coreElements = coreElements
                 issueViewController.issueModel = coreElements?.issueDataSource.issue(at: indexPath)
+                issueViewController.showButtons = false
             }
         }
     }
