@@ -18,6 +18,7 @@ class NetworkManager: NSObject {
     var registerUserStr = "http://itec-api.deventure.co/api/Account/Register";
     var loginUserStr = "http://itec-api.deventure.co/api/Token";
     var addCommentStr = "http://itec-api.deventure.co/api/Comment/Create";
+    var deleteCommentStr = "http://itec-api.deventure.co/api/Comment/Delete/";
     var addIssueStr = "http://itec-api.deventure.co/api/Issue/Create";
     var updateUserStr = "http://itec-api.deventure.co/api/Account/Update";
 
@@ -309,8 +310,8 @@ class NetworkManager: NSObject {
         let addIssueUrl = URL(string: addIssueStr)!
         var request = URLRequest(url: addIssueUrl)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let x = tokenType + " " + accessToken
-        request.setValue(x, forHTTPHeaderField: "Authorization")
+        let access = tokenType + " " + accessToken
+        request.setValue(access, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         
         let json = issueModel.toJson()
@@ -339,8 +340,8 @@ class NetworkManager: NSObject {
         let addCommentUrl = URL(string: addCommentStr)!
         var request = URLRequest(url: addCommentUrl)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let x = tokenType + " " + accessToken
-        request.setValue(x, forHTTPHeaderField: "Authorization")
+        let access = tokenType + " " + accessToken
+        request.setValue(access, forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         
         let json = commentModel.toJson(issueId: issueId)
@@ -370,6 +371,40 @@ print(json)
         task.resume()
     }
     
+    func deleteComment(id: String, tokenType: String, accessToken: String, completitionHandler completion:@escaping (Bool) -> Void) {
+        
+        // build request url
+        let deleteCommentUrl = URL(string: deleteCommentStr)!
+        var request = URLRequest(url: deleteCommentUrl)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let access = tokenType + " " + accessToken
+        request.setValue(access, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            
+            let status = httpResponse.statusCode
+            if(status == 200) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        // start task
+        task.resume()
+    }
+
     func constructIssue(issueDict: [String:Any]) -> IssueModel {
 
         let issueModel = IssueStubData()

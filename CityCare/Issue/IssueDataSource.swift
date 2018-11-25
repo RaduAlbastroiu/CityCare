@@ -48,4 +48,9 @@ class IssueDataSource: NSObject, UITableViewDataSource {
     func issue(at indexPath: IndexPath) -> IssueModel {
         return data[indexPath.row]
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = data[indexPath.row]
+        print(item)
+    }
 }

@@ -53,6 +53,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
                 let indexPath = issuesTableView.indexPathForSelectedRow {
                 issueViewController.coreElements = coreElements
                 issueViewController.issueModel = coreElements?.issueDataSource.issue(at: indexPath)
+                issueViewController.showButtons = true
             }
         }
     }

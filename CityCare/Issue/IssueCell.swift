@@ -29,6 +29,5 @@ class IssueCell: UITableViewCell {
         issueTitleLabel.text = issueModel.title
         issueDescriptionLabel.text = issueModel.description
     }
-    
 }
 
