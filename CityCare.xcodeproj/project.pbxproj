@@ -95,6 +95,14 @@
 			path = Issue;
 			sourceTree = "<group>";
 		};
+		DA0D320F21AA3F66001D500C /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				DA7ACC0921A877110073E684 /* ReportViewController.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		DA7ACBE121A85F120073E684 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +122,7 @@
 		DA7ACBEC21A85F120073E684 /* CityCare */ = {
 			isa = PBXGroup;
 			children = (
+				DA0D320F21AA3F66001D500C /* Report */,
 				DA7ACC1D21A9238E0073E684 /* NetworkManager */,
 				DA7ACC1921A8BC930073E684 /* ImagePicker */,
 				0A40E9D621A8B37B00325D4F /* Issue */,
@@ -123,7 +132,6 @@
 				DA7ACBEF21A85F120073E684 /* ViewController.swift */,
 				DA7ACC0221A861650073E684 /* Main.storyboard */,
 				DA7ACC0B21A898ED0073E684 /* CoreElements.swift */,
-				DA7ACC0921A877110073E684 /* ReportViewController.swift */,
 				DA7ACBF421A85F130073E684 /* Assets.xcassets */,
 				DA7ACBF621A85F130073E684 /* LaunchScreen.storyboard */,
 				DA7ACBF921A85F130073E684 /* Info.plist */,

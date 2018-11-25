@@ -46,7 +46,10 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
         }
     }
     
-
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func addComment(_ sender: Any) {
         print("Add comment")
     }

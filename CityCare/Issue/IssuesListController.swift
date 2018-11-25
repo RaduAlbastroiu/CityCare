@@ -24,7 +24,16 @@ class IssuesListController: UITableViewController {
         tableView.dataSource = coreElements?.issueDataSource
     }
 
-
+    @IBAction func goBack(_ sender: Any) {
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        view.layer.add(transition, forKey: "leftoright")
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 89
     }

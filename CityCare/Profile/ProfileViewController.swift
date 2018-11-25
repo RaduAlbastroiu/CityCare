@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var issuesTableView: UITableView!
     
     var coreElements: CoreElements?
     
@@ -21,15 +22,23 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         fullNameLabel.text = coreElements?.authorizationModel?.profileData.fullName
+        
+        if let personalIssues = coreElements?.authorizationModel?.profileData.issues {
+            coreElements?.issueDataSource.update(with: personalIssues)
+        }
+ 
+        issuesTableView.delegate = self
+        issuesTableView.dataSource = coreElements?.issueDataSource
+        issuesTableView.reloadData()
     }
     
     @IBAction func goBack(_ sender: Any) {
         let transition = CATransition()
         transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromLeft
-        view.layer.add(transition, forKey: "rightToLeftTransition")
+        view.layer.add(transition, forKey: "leftoright")
         dismiss(animated: true, completion: nil)
     }
     
@@ -38,14 +47,14 @@ class ProfileViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "PersonalIssueSegue" {
+            if let issueViewController = segue.destination as? IssueViewController,
+                let indexPath = issuesTableView.indexPathForSelectedRow {
+                issueViewController.coreElements = coreElements
+                issueViewController.issueModel = coreElements?.issueDataSource.issue(at: indexPath)
+            }
+        }
     }
-    */
-
+    
 }
