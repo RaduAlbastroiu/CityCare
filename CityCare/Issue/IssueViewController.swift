@@ -16,6 +16,8 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
     @IBOutlet weak var upVotesLabel: UILabel!
     @IBOutlet weak var downVotesLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var upVoteImage: UIImageView!
+    @IBOutlet weak var downVoteImage: UIImageView!
     
     var coreElements: CoreElements?
     var issueModel: IssueModel?
@@ -24,6 +26,9 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        upVoteImage.isHidden = true
+        downVoteImage.isHidden = true
         
         tableView.delegate = self
         if let comments = issueModel?.comments {
@@ -43,6 +48,8 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
             descriptionLabel.text = issueModel.description
             upVotesLabel.text = String(issueModel.upVotes)
             downVotesLabel.text = String(issueModel.downVotes)
+            upVotesLabel.isHidden = true
+            downVotesLabel.isHidden = true
         }
         
         
@@ -53,6 +60,12 @@ class IssueViewController: UIViewController, UITableViewDelegate  {
     }
     
     @IBAction func goBack(_ sender: Any) {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        view.layer.add(transition, forKey: "leftToRightTransition")
         dismiss(animated: true, completion: nil)
     }
     

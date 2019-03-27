@@ -66,7 +66,16 @@ extension IssuesListController: UISearchResultsUpdating {
                 }
             }
             
-            coreElements?.issueDataSource.update(with: issueListWithName)
+            if searchText == ""
+            {
+                if let coreElements = coreElements, let issues = coreElements.allIssues {
+                    coreElements.issueDataSource.update(with: issues)
+                }
+            }
+            else
+            {
+                coreElements?.issueDataSource.update(with: issueListWithName)
+            }
             self.tableView.reloadData()
         }
     }
